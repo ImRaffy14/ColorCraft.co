@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Russo+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Lilita+One&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* slide-up-text.css */
+.slide-up-text {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.5s ease, transform 1.5s ease;
+  }
+
+.slide-up-company {
+    opacity: 0;
+    transform: translateY(-50px);
+    transition: opacity 0.5s ease, transform 1.5s ease;
+  }
+  
+  .slide-up-company.animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .slide-up-text.animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
