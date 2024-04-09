@@ -1,6 +1,6 @@
 import Header from './Header.jsx'
 import LandingPage from './LandingPage.jsx'
-
+import AboutUs from './AboutUs.jsx'
 function App() {
   
 
@@ -13,6 +13,11 @@ function App() {
       <section>
         <LandingPage/>
       </section>
+
+      <section>
+        <AboutUs/>
+      </section>
+
     </>
   )
 }

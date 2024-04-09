@@ -28,7 +28,7 @@ function LandingPage() {
         </div>
         <div className={`slide-up-text ${isVisible ? 'animate' : ''}`}>
           <div className="mb-16 mt-5">
-            <h1 className="text-4xl lg:text-7xl font-extrabold text-center mx-10"> Experience the <a className="underline decoration-emerald-600">Glow</a>, Create the <a className="underline decoration-yellow-500">Magic</a>: Unleash Your <a className="underline decoration-yellow-500">Imagination</a> with our Vibrant <a className="underline decoration-emerald-600">Glow in the Dark Paint</a></h1>
+            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-7xl font-extrabold text-center mx-10"> Experience the <a className="underline decoration-emerald-600">Glow</a>, Create the <a className="underline decoration-yellow-500">Magic</a>: Unleash Your <a className="underline decoration-yellow-500">Imagination</a> with our Vibrant <a className="underline decoration-emerald-600">Glow in the Dark Paint</a></h1>
           </div>
         </div>
     

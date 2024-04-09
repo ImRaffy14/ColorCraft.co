@@ -23,7 +23,7 @@ function Header() {
     return(
 
   
-    <div className={`navbar text-slate-100 ${isScrolled ? `bg-neutral-100` : `bg-opacity-0`} fixed top-0 w-full z-20`}>
+    <div className={`navbar ${isScrolled ? `bg-neutral-100 text-black` : `bg-opacity-0 text-slate-100`} fixed top-0 w-full z-20`}>
       <div className="navbar-start ml-0 md:ml-5">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost md:hidden">
@@ -66,7 +66,7 @@ function Header() {
         </ul>
       </div>
       <div className="navbar-end mr-2 md:mr-6">
-        <a className="btn rounded-full w-20">Login</a>
+        <a className={`${isScrolled ? `btn btn-active btn-neutral`:`btn`} rounded-full w-20`}>Login</a>
       </div>
     </div>
   
