@@ -6,12 +6,18 @@ import { Link } from 'react-scroll';
 function LandingPage() {
 
     const [isVisible, setIsVisible] = useState(false);
+    const [isActive, setIsActive] = useState ('')
 
     useEffect(() => {
       setIsVisible(true);
     }, []);
 
     
+    const handleSetActive = (to) => {
+      setIsActive(to)
+    }
+
+    console.log(isActive)
 
   return (
 
@@ -36,7 +42,11 @@ function LandingPage() {
     
         <p className={`slide-up-text ${isVisible ? 'animate' : ''} mb-4`}>Scroll to see more</p>
 
-        <Link to="about-us" smooth={true} duration={500}>
+        <Link to="aboutus"  
+              spy={true}
+              smooth={true}
+              duration={500}
+              onSetActive={handleSetActive}>
         <button
         className="cursor-pointer bg-opacity-0 px-3 py-2 rounded-md text-white tracking-wider shadow-xl animate-bounce hover:animate-none"
         >
@@ -57,7 +67,8 @@ function LandingPage() {
         </button> 
         </Link> 
       </div>
-      <div id="about-us" className="my-[90px]"> 
+      <div className="my-[90px]"> 
+      <section id="aboutus"></section>
       </div> 
     </div>
     

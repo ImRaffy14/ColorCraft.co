@@ -3,10 +3,12 @@ import React, { useState, useEffect } from 'react';
 import { FaPaintRoller } from "react-icons/fa";
 import { FaPaintBrush } from "react-icons/fa";
 import { GiSpray } from "react-icons/gi";
+import { Link } from 'react-scroll';
 
 function Header() {
 
   const [isScrolled, setIsScrolled] = useState(false);
+  
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,7 +40,7 @@ function Header() {
                 <li><a><GiSpray />GlowMagic Spray paint</a></li>
               </ul>
             </li>
-            <li><a>About Us</a></li>
+            <li><Link to="about-us" smooth={true} duration={500}>About Us</Link></li>
             <li><a>Contact Us</a></li>
             <li><a>FAQ's</a></li>
           </ul>
@@ -60,7 +62,7 @@ function Header() {
               </ul>
             </details>
           </li>
-          <li className="mr-4"><a>About Us</a></li>
+          <li className="mr-4"><Link activeClass="active" to="about-us" smooth={true} duration={500} >About Us</Link></li>
           <li className="mr-4"><a>Contact Us</a></li>
           <li className="mr-4"><a>FAQ's</a></li>
         </ul>

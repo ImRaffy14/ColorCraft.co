@@ -21,7 +21,7 @@ function AboutUs (){
     }, []);
 
     return(
-        <div id="about-us" className="h-[1500PX] w-full bg-gray-100">
+        <div className="h-[1500PX] w-full bg-gray-100">
             <div className={`max-w-screen-xl mx-auto flex items-center justify-center h-[1000px] px-4 slide-about-product ${isVisible ? 'animate' : ''}`}>
                 <div className="flex flex-col h-[650px] w-full lg:w-[1800px] mx-10 overscroll-contain items-center">
                     <div className="hidden md:block">
