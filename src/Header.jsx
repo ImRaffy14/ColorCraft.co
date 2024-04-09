@@ -8,7 +8,6 @@ import { Link } from 'react-scroll';
 function Header() {
 
   const [isScrolled, setIsScrolled] = useState(false);
-  
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,6 +21,9 @@ function Header() {
     };
   }, []);
 
+ 
+
+ 
     return(
 
   
@@ -46,7 +48,7 @@ function Header() {
           </ul>
         </div>
         
-        <img className="btn btn-ghost text-xl" src={Logo} alt="Logo" />  
+        <Link to="landing-page" smooth={true} duration={500}><img className="btn btn-ghost text-xl" src={Logo} alt="Logo" /></Link> 
         <h1></h1>
        
       </div>
@@ -62,7 +64,7 @@ function Header() {
               </ul>
             </details>
           </li>
-          <li className="mr-4"><Link activeClass="active" to="about-us" smooth={true} duration={500} >About Us</Link></li>
+          <li className="mr-4"><Link activeClass="active" spy={true} to="about-us" smooth={true} duration={500}>About Us</Link></li>
           <li className="mr-4"><a>Contact Us</a></li>
           <li className="mr-4"><a>FAQ's</a></li>
         </ul>
