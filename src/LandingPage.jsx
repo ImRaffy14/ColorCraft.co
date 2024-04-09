@@ -1,6 +1,7 @@
 import { GrPaint } from "react-icons/gr";
 import Background from './assets/Background.jpg'
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-scroll';
 
 function LandingPage() {
 
@@ -14,6 +15,7 @@ function LandingPage() {
 
   return (
 
+  <>
     <div className="h-screen w-full relative">
       <div
         className="absolute inset-0 bg-cover bg-center"
@@ -33,6 +35,8 @@ function LandingPage() {
         </div>
     
         <p className={`slide-up-text ${isVisible ? 'animate' : ''} mb-4`}>Scroll to see more</p>
+
+        <Link to="about-us" smooth={true} duration={500}>
         <button
         className="cursor-pointer bg-opacity-0 px-3 py-2 rounded-md text-white tracking-wider shadow-xl animate-bounce hover:animate-none"
         >
@@ -46,14 +50,18 @@ function LandingPage() {
         >
             <path
             d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"
-            stroke-linejoin="round"
-            stroke-linecap="round"
+            strokeLinejoin="round"
+            strokeLinecap="round"
             ></path>
         </svg>
-        </button>  
+        </button> 
+        </Link> 
       </div>
+      <div id="about-us" className="my-[90px]"> 
+      </div> 
     </div>
     
+  </>  
   );
 }
 
