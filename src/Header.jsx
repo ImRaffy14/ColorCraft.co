@@ -4,6 +4,7 @@ import { FaPaintRoller } from "react-icons/fa";
 import { FaPaintBrush } from "react-icons/fa";
 import { GiSpray } from "react-icons/gi";
 import { Link } from 'react-scroll';
+import { Link as Links} from 'react-router-dom'
 
 function Header() {
 
@@ -37,9 +38,9 @@ function Header() {
             <li>
               <a>Products</a>
               <ul className="p-2">
-              <li><a><FaPaintRoller />IllumiGlow Interior paint</a></li>
-                <li><a><FaPaintBrush />GlowGlam Face and body paint</a></li>
-                <li><a><GiSpray />GlowMagic Spray paint</a></li>
+              <li><Links to="/ColorCraft.co/IllumiGlow"><FaPaintRoller />IllumiGlow Interior paint</Links></li>
+                <li><Links to="/ColorCraft.co/GlowGlam"><FaPaintBrush />GlowGlam Face and body paint</Links></li>
+                <li><Links to="/ColorCraft.co/GlowMagic"><GiSpray />GlowMagic Spray paint</Links></li>
               </ul>
             </li>
             <li><Link to="about-us" smooth={true} duration={500}>About Us</Link></li>
@@ -58,9 +59,9 @@ function Header() {
             <details>
               <summary>Products</summary>
               <ul className="p-2 w-[200px] text-black bg-neutral-100">
-                <li><a><FaPaintRoller />IllumiGlow Interior paint</a></li>
-                <li><a><FaPaintBrush />GlowGlam Face and body paint</a></li>
-                <li><a><GiSpray />GlowMagic Spray paint</a></li>
+                <li><Links to="/ColorCraft.co/IllumiGlow"><FaPaintRoller />IllumiGlow Interior paint</Links></li>
+                <li><Links to="/ColorCraft.co/GlowGlam"><FaPaintBrush />GlowGlam Face and body paint</Links></li>
+                <li><Links to="/ColorCraft.co/GlowMagic"><GiSpray />GlowMagic Spray paint</Links></li>
               </ul>
             </details>
           </li>
