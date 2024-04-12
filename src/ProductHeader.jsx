@@ -3,6 +3,7 @@ import { FaPaintRoller } from "react-icons/fa";
 import { FaPaintBrush } from "react-icons/fa";
 import { GiSpray } from "react-icons/gi";
 import { Link } from 'react-router-dom'
+import { LuShoppingCart } from "react-icons/lu";
 
 function ProductHeader() {
 
@@ -30,7 +31,7 @@ function ProductHeader() {
         </div>
         
         <Link to="/ColorCraft.co/"><img className="btn btn-ghost text-xl" src={Logo} alt="Logo" /></Link> 
-        <h1></h1>
+        
        
       </div>
       <div className="navbar-center hidden md:flex ">
@@ -41,7 +42,7 @@ function ProductHeader() {
         </ul>
       </div>
       <div className="navbar-end mr-2 md:mr-6">
-        <a className="btn btn-active btn-neutral rounded-full w-20">Login</a>
+        <a className="btn btn-active btn-neutral rounded-full w-20"><LuShoppingCart /></a>
       </div>
     </div>
   
