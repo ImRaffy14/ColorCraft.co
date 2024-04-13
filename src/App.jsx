@@ -17,9 +17,9 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/ColorCraft.co/" element={<><Header/> <LandingPage/> <AboutUs/> <ContactUs/></>}/>
-        <Route path="/ColorCraft.co/IllumiGlow" element={<><ProductHeader/> <IllumiGlow/></>}/>
-        <Route path="/ColorCraft.co/GlowGlam" element={<> <ProductHeader/><GlowGlam/></>}/>
-        <Route path="/ColorCraft.co/GlowMagic" element={<><ProductHeader/> <GlowMagic/></>}/>
+        <Route path="/ColorCraft.co/IllumiGlow" element={<>  <IllumiGlow/></>}/>
+        <Route path="/ColorCraft.co/GlowGlam" element={<> <GlowGlam/></>}/>
+        <Route path="/ColorCraft.co/GlowMagic" element={<> <GlowMagic/></>}/>
       </Routes>
       </BrowserRouter>
     </>
