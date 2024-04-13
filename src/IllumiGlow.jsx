@@ -1,4 +1,4 @@
-import sampleImg from './assets/sample.jpg'
+import sampleImg from './assets/Sample.jpg'
 import { IllumiGlowPaint, GlowGlamPaint, GlowMagicPaint } from './Data/Products'
 import { LuShoppingCart } from "react-icons/lu";
 import React, { useState, useEffect } from 'react'
