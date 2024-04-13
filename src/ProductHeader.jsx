@@ -47,9 +47,7 @@ import { LuShoppingCart } from "react-icons/lu";
         <a className="btn btn-active btn-neutral rounded-full w-20 " onClick={()=>document.getElementById('my_modal_1').showModal()}><LuShoppingCart /></a>
       </div>
     </div>
-
-
-
+    
   </>
     
   
