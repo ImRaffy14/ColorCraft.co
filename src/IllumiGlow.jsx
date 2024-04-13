@@ -1,4 +1,4 @@
-import sampleImg from './assets/Sample.jpg'
+import IllumiGlowImg from './assets/IllumiGlow.jpg'
 import { IllumiGlowPaint, GlowGlamPaint, GlowMagicPaint } from './Data/Products'
 import { LuShoppingCart } from "react-icons/lu";
 import React, { useState, useEffect } from 'react'
@@ -33,6 +33,7 @@ function IllumiGlow () {
         localStorage.setItem('cartItems', JSON.stringify(cartItem));
       }, [cartItem]);
      
+      console.log(cartItem)
     
     return(
 
@@ -41,7 +42,7 @@ function IllumiGlow () {
         <div className="bg-neutral-100">
             <div id="IllumiGlow" className="h-dvh-100 w-full bg-neutral-100 text-black">
                 <div className="max-w-screen-2xl h-[800px] md:h-[500px] justify-center items-center mx-auto flex flex-col md:flex-row border-b border-gray-500">
-                    <img src={sampleImg} className="max-w-sm rounded-lg shadow-2xl w-[300px] h-[300px] mx-[30px] border-2 border-emerald-400" />
+                    <img src={IllumiGlowImg} className="max-w-sm rounded-lg shadow-2xl w-[300px] h-[300px] mx-[30px] border-2 border-emerald-400" />
                     <div className="mx-[10px] mt-[50px] md:mt-0 text-center md:text-start mb-10 text-neutral-800">
                         <h1 className="mb-4 font-extrabold text-4xl">IllumiGlow Interior Paint</h1>
                         <p className="">Crafted with premium-grade phosphorescent pigments, it absorbs light during the day and emits a mesmerizing glow at night. Create a captivating ambiance in your home with this eco-friendly and non-toxic paint. Easy to apply and quick-drying, it leaves a flawless, radiant finish. Let your walls shine with IllumiGlow and bring magic to your space. Illuminate your imagination today. </p>
@@ -71,7 +72,7 @@ function IllumiGlow () {
 
             <div id="GlowGlam" className="h-dvh-100 w-full bg-neutral-100 text-black mt-[100px]">
                 <div className="max-w-screen-2xl h-[800px] md:h-[500px] justify-center items-center mx-auto flex flex-col md:flex-row border-b border-gray-500">
-                    <img src={sampleImg} className="max-w-sm rounded-lg shadow-2xl w-[300px] h-[300px] mx-[30px] border-2 border-emerald-400" />
+                    <img src={IllumiGlowImg} className="max-w-sm rounded-lg shadow-2xl w-[300px] h-[300px] mx-[30px] border-2 border-emerald-400" />
                     <div className="mx-[10px] mt-[50px] md:mt-0 text-center md:text-start mb-10 text-neutral-800">
                         <h1 className="mb-4 font-extrabold text-4xl">GlowGlam Face and Body Paint Paint</h1>
                         <p className="">GlowGlam Face and Body Paint lets you shine like never before. With vibrant colors and a captivating glow-in-the-dark effect, this premium-grade paint transforms you into a luminous masterpiece. Easy to apply and long-lasting, it's perfect for parties, festivals, and special events. Let your creativity glow with GlowGlam. Illuminate your world today.</p>
@@ -101,7 +102,7 @@ function IllumiGlow () {
 
             <div id="GlowMagic" className="h-dvh-100 w-full bg-neutral-100 text-black mt-[100px]">
                 <div className="max-w-screen-2xl h-[800px] md:h-[500px] justify-center items-center mx-auto flex flex-col md:flex-row border-b border-gray-500">
-                    <img src={sampleImg} className="max-w-sm rounded-lg shadow-2xl w-[300px] h-[300px] mx-[30px] border-2 border-emerald-400" />
+                    <img src={IllumiGlowImg} className="max-w-sm rounded-lg shadow-2xl w-[300px] h-[300px] mx-[30px] border-2 border-emerald-400" />
                     <div className="mx-[10px] mt-[50px] md:mt-0 text-center md:text-start mb-10 text-neutral-800">
                         <h1 className="mb-4 font-extrabold text-4xl">GlowMagic Spray Paint</h1>
                         <p className="">Ignite Your Artistic Brilliance,unleash your creativity and add a touch of magic to your artwork with GlowMagic Spray Paint. This extraordinary paint combines vibrant colors with an enchanting glow-in-the-dark effect, allowing you to create captivating masterpieces that come alive after dark. Illuminate your imagination and let your artistic brilliance shine with GlowMagic Spray Paint. Elevate your art to new heights and leave a lasting impression with this innovative and mesmerizing paint. </p>
