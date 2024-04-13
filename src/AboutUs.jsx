@@ -19,6 +19,7 @@ function AboutUs (){
         window.removeEventListener('scroll', handleScroll);
       };
     }, []);
+    
 
     return(
         <div className="h-[1200px] w-full bg-gray-100">
