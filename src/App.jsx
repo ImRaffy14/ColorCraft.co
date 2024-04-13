@@ -12,7 +12,7 @@ function App() {
 
   return (
     <>
-    <BrowserRouter basename="/ColorCraft.co">
+    <BrowserRouter>
       <Routes>
         <Route path="/ColorCraft.co/" element={<><Header/> <LandingPage/> <AboutUs/> <ContactUs/></>}/>
         <Route path="/ColorCraft.co/IllumiGlow" element={<> <ProductHeader/> <IllumiGlow/></>}/>
