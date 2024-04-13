@@ -5,11 +5,25 @@ import { GiSpray } from "react-icons/gi";
 import { Link } from 'react-scroll';
 import { Link as Links } from 'react-router-dom'
 import { LuShoppingCart } from "react-icons/lu";
+import React, {useState, useEffect} from 'react'
 
 
 
-  function ProductHeader() {
+  function ProductHeader({itemNumber}) {
 
+    const [notif, setNotif] = useState(false)
+
+    useEffect(() => {
+      if(itemNumber === 0){
+        setNotif(true)
+      }
+      else{
+        setNotif(false)
+      }
+    }, [itemNumber])
+
+
+    
     return(
 
   <>
@@ -44,7 +58,7 @@ import { LuShoppingCart } from "react-icons/lu";
         </ul>
       </div>
       <div className="navbar-end mr-2 md:mr-6">
-        <a className="btn btn-active btn-neutral rounded-full w-20 " onClick={()=>document.getElementById('my_modal_1').showModal()}><LuShoppingCart /></a>
+        <a className="btn btn-active btn-neutral rounded-full w-20" onClick={() => document.getElementById('my_modal_1').showModal()}>{notif ? '' : `${itemNumber}`}<LuShoppingCart /></a>
       </div>
     </div>
     

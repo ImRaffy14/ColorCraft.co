@@ -1,5 +1,4 @@
 import Header from './Header.jsx';
-import ProductHeader from './ProductHeader.jsx'
 import LandingPage from './LandingPage.jsx';
 import AboutUs from './AboutUs.jsx';
 import IllumiGlow from './IllumiGlow.jsx';
@@ -15,7 +14,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/ColorCraft.co/" element={<><Header/> <LandingPage/> <AboutUs/> <ContactUs/></>}/>
-        <Route path="/ColorCraft.co/IllumiGlow/" element={<> <ProductHeader/> <IllumiGlow/></>}/>
+        <Route path="/ColorCraft.co/IllumiGlow/" element={ <IllumiGlow/> }/>
       </Routes>
       </BrowserRouter>
     </>

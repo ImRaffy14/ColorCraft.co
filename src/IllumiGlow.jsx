@@ -1,6 +1,7 @@
 import IllumiGlowImg from './assets/IllumiGlow.jpg'
 import GlowMagicImg from './assets/GlowMagic.jpg'
 import GlowGlamImg from './assets/GlowGlam.jpg'
+import ProductHeader from './ProductHeader.jsx'
 import { IllumiGlowPaint, GlowGlamPaint, GlowMagicPaint } from './Data/Products'
 import { LuShoppingCart } from "react-icons/lu";
 import React, { useState, useEffect } from 'react'
@@ -12,9 +13,10 @@ function IllumiGlow () {
 
     const [cartItem, setCartItem] = useState([]);
     const [emptyCart, setEmptyCart] = useState(true)
-
-    const cartItemId = cartItem.map((product) => product.Id);
     
+    const totalItems = cartItem.length
+    const cartItemId = cartItem.map((product) => product.Id);
+
     const addToCart = (product) => {
         if (cartItemId.includes(product.Id)) {
             alert('You already added this item to the cart');
@@ -24,7 +26,6 @@ function IllumiGlow () {
     };
     
     useEffect(() => {
-        // Load cart data from local storage when component mounts
         const savedCart = JSON.parse(localStorage.getItem('cartItems')) || [];
         if (savedCart) {
             setCartItem(prevCart => [...prevCart, ...savedCart]);
@@ -41,10 +42,7 @@ function IllumiGlow () {
             setEmptyCart(true)
         }
       }, [cartItem]);
-     
-      console.log(emptyCart)
-
-
+ 
     const handleRemoveItem = (index) => {
         const updatedCart = [...cartItem];
         const removedItem = updatedCart.filter((_,i) => i !== index)
@@ -53,7 +51,7 @@ function IllumiGlow () {
 
     const handleQuantityChange = (e, index) => {
         const updatedCart = [...cartItem];
-        updatedCart[index].Quantity = parseInt(e.target.value) || 0; 
+        updatedCart[index].Quantity = parseInt(e.target.value) || 0;
         setCartItem(updatedCart);
     };
 
@@ -72,10 +70,11 @@ function IllumiGlow () {
     };
 
     
+
     return(
 
         <>
-        
+        <ProductHeader itemNumber={totalItems}/>
         <div className="bg-neutral-100">
             <div id="IllumiGlow" className="h-dvh-100 w-full bg-neutral-100 text-black">
                 <div className="max-w-screen-2xl h-[800px] md:h-[500px] justify-center items-center mx-auto flex flex-col md:flex-row border-b border-gray-500">
