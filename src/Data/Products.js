@@ -104,7 +104,7 @@ export const GlowGlamPaint = [{
                         Name:"GlowGlam Green",
                         Size:"60 ml",
                         Price:220,
-                        Image:"src/assets/Sample.jpg"
+                        Image:"src/assets/GlowGlam.jpg"
                     },{
                         Id:18,
                         Name:"GlowGlam Green",
