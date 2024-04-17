@@ -13,18 +13,34 @@ function IllumiGlow () {
 
     const [cartItem, setCartItem] = useState([]);
     const [emptyCart, setEmptyCart] = useState(true)
-    
+    const [notifFailedTimeout, setNotifFailedTimeout] = useState(false)
+    const [itemNotifId, setItemNotifId] = useState([])
+    const [removeIndex, setRemoveIndex] = useState(null)
+    const [totalPrice, setTotalPrice] = useState([])
+
     const totalItems = cartItem.length
     const cartItemId = cartItem.map((product) => product.Id);
 
+    console.log(totalPrice)
+    
+    //Handles add to cart
     const addToCart = (product) => {
         if (cartItemId.includes(product.Id)) {
-            alert('You already added this item to the cart');
+            setNotifFailedTimeout(true);
+            setTimeout(() => {
+                setNotifFailedTimeout(false);
+            }, 3000); 
         } else {
+            setItemNotifId(prevItem => [...prevItem, product.Id])
             setCartItem(prevCart => [...prevCart, product]);
+            setTotalPrice(prevTotal => [...prevTotal, product.Price])
+          
         }
     };
+
     
+    
+    //Saving to local storage
     useEffect(() => {
         const savedCart = JSON.parse(localStorage.getItem('cartItems')) || [];
         if (savedCart) {
@@ -42,12 +58,47 @@ function IllumiGlow () {
             setEmptyCart(true)
         }
       }, [cartItem]);
- 
-    const handleRemoveItem = (index) => {
-        const updatedCart = [...cartItem];
-        const removedItem = updatedCart.filter((_,i) => i !== index)
-        setCartItem(removedItem);
+
+
+
+    //Notification
+    useEffect(() => {
+    let intervalId;
+
+    if (itemNotifId.length > 0) {
+        intervalId = setInterval(() => {
+            setItemNotifId(prevItem => {
+                if (prevItem.length > 0) {
+                    const newData = [...prevItem];
+                    newData.shift();
+                    return newData;
+                }
+                return prevItem;
+                });
+            }, 1000);
+        }
+
+        return () => clearInterval(intervalId);
+    }, [itemNotifId]);
+
+
+    //Interactions
+
+    
+    const handleModalConfirmation = (index) => {
+        setRemoveIndex(index)
+        document.getElementById('removeConfirmation').showModal()
     };
+
+    const handleRemoveItem = () => {
+        const updatedCart = [...cartItem];
+        const removedItem = updatedCart.filter((_,i) => i !== removeIndex)
+        const removedPrice = totalPrice.filter((_,i) => i !== removeIndex)
+        updatedCart[removeIndex].Quantity = 1;
+        setCartItem(updatedCart);    
+        setCartItem(removedItem);
+        setTotalPrice(removedPrice)
+    }
 
     const handleQuantityChange = (e, index) => {
         const updatedCart = [...cartItem];
@@ -59,13 +110,22 @@ function IllumiGlow () {
         const updatedCart = [...cartItem];
         updatedCart[index].Quantity += 1;
         setCartItem(updatedCart);
+        handlePrice(index)
     };
+
+    const handlePrice = (index) => {
+        const updatedTotalPrice = [...totalPrice]; // Create a copy of totalPrice array
+        const totalPriceQuan = cartItem[index].Quantity * cartItem[index].Price; // Calculate total price for the item
+        updatedTotalPrice[index] = totalPriceQuan; // Update total price at the specified index
+        setTotalPrice(updatedTotalPrice); // Set the updated total price array
+    }
     
     const handleDecrement = (index) => {
         const updatedCart = [...cartItem];
         if (updatedCart[index].Quantity > 1) {
             updatedCart[index].Quantity -= 1;
             setCartItem(updatedCart);
+            handlePrice(index)
         }
     };
 
@@ -77,6 +137,22 @@ function IllumiGlow () {
         <ProductHeader itemNumber={totalItems}/>
         <div className="bg-neutral-100">
             <div id="IllumiGlow" className="h-dvh-100 w-full bg-neutral-100 text-black">
+                <div className={`flex flex-col justify-center items-start fixed top-[70px] right-3 z-40 `}>
+                    {itemNotifId.map((notif) =>
+                    <div key={notif} role="alert" className="alert alert-success mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    <span>Product ID:{notif} added to the cart.</span>
+                    </div>
+                       )}
+                     
+                    {notifFailedTimeout && 
+                    <div  role="alert" className="alert alert-error mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    <span>You Already added this item to the cart.</span>
+                    </div>
+                       }
+                     
+                </div>
                 <div className="max-w-screen-2xl h-[800px] md:h-[500px] justify-center items-center mx-auto flex flex-col md:flex-row border-b border-gray-500">
                     <img src={IllumiGlowImg} className="max-w-sm rounded-lg shadow-2xl w-[300px] h-[300px] mx-[30px] border-2 border-emerald-400" />
                     <div className="mx-[10px] mt-[50px] md:mt-0 text-center md:text-start mb-10 text-neutral-800">
@@ -125,7 +201,7 @@ function IllumiGlow () {
                             <p className="text-md font-medium">₱{product.Price}</p>
                             <div className="card-actions justify-end">
                                 {/* Call addToCart function with the product details when button is clicked */}
-                                <button className="btn btn-warning" onClick={() => addToCart(product)}>
+                                <button className="btn btn-warning" onClick={() => addToCart(product) }>
                                     <LuShoppingCart /> Add to Cart
                                 </button>
                             </div>
@@ -155,7 +231,7 @@ function IllumiGlow () {
                             <p className="text-md font-medium">₱{product.Price}</p>
                             <div className="card-actions justify-end">
                                 {/* Call addToCart function with the product details when button is clicked */}
-                                <button className="btn btn-warning" onClick={() => addToCart(product)}>
+                                <button className="btn btn-warning" onClick={() => addToCart(product) }>
                                     <LuShoppingCart /> Add to Cart
                                 </button>
                             </div>
@@ -169,15 +245,15 @@ function IllumiGlow () {
                 {/* Open the modal using document.getElementById('ID').showModal() method */}
  
             <dialog id="my_modal_1" className="modal">
-            <div className="modal-box w-full flex flex-col lg:flex-row max-w-6xl h-[600px]">
-                <div className="w-full lg:w-6/12 h-[500px] overflow-auto mr-0 md:mr-1">
+            <div className="modal-box w-full flex flex-col lg:flex-row max-w-6xl h-[600px] bg-gray-200">
+                <div className="w-full lg:w-6/12 h-full items-center justify-center overflow-auto mr-0 md:mr-1 flex flex-wrap sm:flex-wrap">
                     
-                   {emptyCart && <div><h1>Empty Cart</h1></div>}
+                   {emptyCart && <div className="mx-auto h-full items-center justify-center flex flex-col font-bold text-4xl text-gray-400"><h1>Empty Cart</h1></div>}
                    {cartItem.map((items, index) =>  
-                   <div key={items.Id} className="card card-side h-[200px] w-[250px] lg:w-[500px] sm:w-[700px] bg-base-100 shadow-xl my-4 mx-2">
+                   <div key={items.Id} className="card card-side h-[250px] w-[250px] lg:w-[500px] sm:w-[700px] sm:h-[200px] bg-base-100 shadow-xl my-4 mx-2">
                     <figure><img className="w-[200px] hidden sm:block" src={items.Image} alt={items.Name}/></figure>
                     <div className="card-body">
-                        <button className="btn btn-sm btn-error absolute right-2 top-2" onClick={() => handleRemoveItem(index)}><FaRegTrashAlt /></button>
+                        <button className="btn btn-sm btn-error absolute right-2 top-2" onClick={() => handleModalConfirmation(index)}><FaRegTrashAlt /></button>
                         <h2 className="card-title">{items.Name}</h2>
                         <p>{items.Size}</p>
                         <p>₱{items.Price}</p>
@@ -196,7 +272,6 @@ function IllumiGlow () {
                 <h1>Order Summary</h1>
                 <p>Subtotal (0 items) : </p>
                 <p>Shipping fee: </p>
-                <input type="text" placeholder="Enter Voucher Code" className="input input-bordered w-full max-w-xs mr-1" /><button className="btn btn-primary">Apply Voucher</button>
                 <h1 className="border-t border-black">Subtotal:</h1>
                 <button className="btn btn-primary w-32">Proceed to Checkout</button>
                 </div>
@@ -204,6 +279,21 @@ function IllumiGlow () {
             <form method="dialog" className="modal-backdrop">
                 <button>close</button>
             </form>
+            </dialog>
+            
+            {/** Remove Item Confirmation */}
+            <dialog id="removeConfirmation" className="modal">
+            <div className="modal-box">
+                <h3 className="font-bold text-lg">Confirmation</h3>
+                <p className="py-4">Are you sure to remove this from cart?</p>
+                <div className="modal-action">
+                <form method="dialog">
+                    {/* if there is a button in form, it will close the modal */}
+                    <button className="btn" onClick={handleRemoveItem}>Yes</button>
+                    <button className="btn mx-4">No</button>
+                </form>
+                </div>
+            </div>
             </dialog>
         </>
     );

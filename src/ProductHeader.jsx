@@ -58,7 +58,7 @@ import React, {useState, useEffect} from 'react'
         </ul>
       </div>
       <div className="navbar-end mr-2 md:mr-6">
-        <a className="btn btn-active btn-neutral rounded-full w-20" onClick={() => document.getElementById('my_modal_1').showModal()}>{notif ? '' : `${itemNumber}`}<LuShoppingCart /></a>
+        <a className="btn btn-active btn-neutral rounded-full w-20" onClick={() => document.getElementById('my_modal_1').showModal()}><LuShoppingCart />{notif ? '' : `${itemNumber}`}</a>
       </div>
     </div>
     
