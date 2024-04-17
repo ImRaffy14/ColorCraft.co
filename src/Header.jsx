@@ -1,4 +1,6 @@
 import Logo from './assets/Logo.png'
+import fbLogo from './assets/fbLogo.png'
+import googleLogo from './assets/googleLogo.png'
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-scroll';
 import { Link as Links} from 'react-router-dom'
@@ -24,7 +26,7 @@ function Header() {
  
     return(
 
-  
+  <>
     <div className={`navbar ${isScrolled ? `bg-neutral-100 text-black` : `bg-opacity-0 text-slate-100`} fixed top-0 w-full z-20`}>
       <div className="navbar-start ml-0 md:ml-5">
         <div className="dropdown">
@@ -48,13 +50,50 @@ function Header() {
           <li className="mr-4"><Links to="/ColorCraft.co/IllumiGlow/">Products</Links></li>
           <li className="mr-4"><Link activeClass="active" spy={true} to="about-us" smooth={true} duration={500}>About Us</Link></li>
           <li className="mr-4"><a>Contact Us</a></li>
-          <li className="mr-4"><a>FAQ's</a></li>
+          <li className="mr-4"><a>Reviews</a></li>
         </ul>
       </div>
       <div className="navbar-end mr-2 md:mr-6">
-        <a className={`${isScrolled ? `btn btn-active btn-neutral`:`btn`} rounded-full w-20`}>Login</a>
+        <a className={`${isScrolled ? `btn btn-active btn-neutral`:`btn`} rounded-full w-20`} onClick={()=>document.getElementById('login').showModal()}>Login</a>
       </div>
     </div>
+
+    {/** modal box */}
+    <dialog id="login" className="modal">
+      <div className="modal-box">
+        <h1 className="text-center font-bold text-2xl mt-4">LOGIN</h1>
+        <form className="card-body">
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Email</span>
+            </label>
+            <input type="email" placeholder="email" className="input input-bordered" required />
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Password</span>
+            </label>
+            <input type="password" placeholder="password" className="input input-bordered" required />
+            <label className="label">
+              <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+            </label>
+          </div>
+          <div className="flex w-full">
+            <div className="grid h-[70px] w-[50px] flex-grow card rounded-box place-items-center cursor-pointer btn btn-active bg-blue-500 hover:bg-blue-600"><img src={fbLogo} className="h-[50px]"/></div>
+            <div className="divider divider-horizontal">OR</div>
+            <div className="grid h-[70px] w-[50px] flex-grow card rounded-box place-items-center cursor-pointer btn btn-active bg-emerald-500 hover:bg-emerald-600"><img src={googleLogo} className="h-[50px]"/></div>
+        </div>
+          <div className="form-control mt-6">
+            <button className="btn btn-primary">Login</button>
+          </div>
+        </form>
+      </div>
+      <form method="dialog" className="modal-backdrop">
+        <button>close</button>
+      </form>
+    </dialog>
+  </>  
+    
   
     )
 

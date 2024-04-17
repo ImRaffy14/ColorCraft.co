@@ -2,6 +2,8 @@ import IllumiGlowImg from './assets/IllumiGlow.jpg'
 import GlowMagicImg from './assets/GlowMagic.jpg'
 import GlowGlamImg from './assets/GlowGlam.jpg'
 import ProductHeader from './ProductHeader.jsx'
+import fbLogo from './assets/fbLogo.png'
+import googleLogo from './assets/googleLogo.png'
 import { IllumiGlowPaint, GlowGlamPaint, GlowMagicPaint } from './Data/Products'
 import { LuShoppingCart } from "react-icons/lu";
 import React, { useState, useEffect } from 'react'
@@ -18,10 +20,10 @@ function IllumiGlow () {
     const [removeIndex, setRemoveIndex] = useState(null)
     const [totalPrice, setTotalPrice] = useState([])
 
+
+
     const totalItems = cartItem.length
     const cartItemId = cartItem.map((product) => product.Id);
-
-    console.log(totalPrice)
     
     //Handles add to cart
     const addToCart = (product) => {
@@ -43,14 +45,17 @@ function IllumiGlow () {
     //Saving to local storage
     useEffect(() => {
         const savedCart = JSON.parse(localStorage.getItem('cartItems')) || [];
-        if (savedCart) {
+        const savedTotal = JSON.parse(localStorage.getItem('totalPrice')) || [];
+        if (savedCart && savedTotal) {
             setCartItem(prevCart => [...prevCart, ...savedCart]);
+            setTotalPrice(prevTotal => [...prevTotal, ...savedTotal]);
         }
     }, []);
     
     
       useEffect(() => {
         localStorage.setItem('cartItems', JSON.stringify(cartItem));
+        localStorage.setItem('totalPrice', JSON.stringify(totalPrice));
         if(cartItem.length > 0){
             setEmptyCart(false)
         }
@@ -82,6 +87,17 @@ function IllumiGlow () {
     }, [itemNotifId]);
 
 
+    //Adding total price
+    const sum = totalPrice.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+    const sumAsPHP = sum.toLocaleString('en-PH', { style: 'currency', currency: 'PHP' });
+    let subTotal;
+    if(cartItem.length === 0){
+        subTotal = 0
+    }
+    else{
+        subTotal = sum + 200
+    }
+    const subTotalAsPHP = subTotal.toLocaleString('en-PH', { style: 'currency', currency: 'PHP' });
     //Interactions
 
     
@@ -114,10 +130,10 @@ function IllumiGlow () {
     };
 
     const handlePrice = (index) => {
-        const updatedTotalPrice = [...totalPrice]; // Create a copy of totalPrice array
-        const totalPriceQuan = cartItem[index].Quantity * cartItem[index].Price; // Calculate total price for the item
-        updatedTotalPrice[index] = totalPriceQuan; // Update total price at the specified index
-        setTotalPrice(updatedTotalPrice); // Set the updated total price array
+        const updatedTotalPrice = [...totalPrice]; 
+        const totalPriceQuan = cartItem[index].Quantity * cartItem[index].Price; 
+        updatedTotalPrice[index] = totalPriceQuan; 
+        setTotalPrice(updatedTotalPrice); 
     }
     
     const handleDecrement = (index) => {
@@ -264,16 +280,14 @@ function IllumiGlow () {
                         </div>
                     </div>
                     </div>)}
-              
-
                 </div>
 
-                <div className="w-full md:w-6/12 h-[500px] mt-[30px] lg:mt-[60px]">
-                <h1>Order Summary</h1>
-                <p>Subtotal (0 items) : </p>
-                <p>Shipping fee: </p>
-                <h1 className="border-t border-black">Subtotal:</h1>
-                <button className="btn btn-primary w-32">Proceed to Checkout</button>
+                <div className="w-full md:w-6/12 h-[400px] mt-[30px] lg:mt-[110px]">
+                <h1 className="font-bold text-center text-2xl mb-[30px]">Order Summary</h1>
+                <p><a className="font-bold mt-32">Total Price:</a> {sumAsPHP}</p>
+                <p><a className="font-bold">Shipping fee:</a> ₱200.00</p>
+                <h1 className="border-t border-black"><a className="font-bold">Subtotal:</a> {subTotalAsPHP}</h1>
+                <button className="btn btn-success mt-4 w-32" onClick={()=>document.getElementById('login').showModal()}>Proceed to Checkout</button>
                 </div>
             </div>
             <form method="dialog" className="modal-backdrop">
@@ -283,9 +297,9 @@ function IllumiGlow () {
             
             {/** Remove Item Confirmation */}
             <dialog id="removeConfirmation" className="modal">
-            <div className="modal-box">
+            <div className="modal-box bg-red-400">
                 <h3 className="font-bold text-lg">Confirmation</h3>
-                <p className="py-4">Are you sure to remove this from cart?</p>
+                <p className="py-4">Are you sure to remove this item from the cart?</p>
                 <div className="modal-action">
                 <form method="dialog">
                     {/* if there is a button in form, it will close the modal */}
@@ -294,6 +308,41 @@ function IllumiGlow () {
                 </form>
                 </div>
             </div>
+            </dialog>
+            
+            {/* Modal box for login */}
+            <dialog id="login" className="modal">
+            <div className="modal-box">
+                <h1 className="text-center font-bold text-2xl mt-4">LOGIN</h1>
+                <form className="card-body">
+                <div className="form-control">
+                    <label className="label">
+                    <span className="label-text">Email</span>
+                    </label>
+                    <input type="email" placeholder="email" className="input input-bordered" required />
+                </div>
+                <div className="form-control">
+                    <label className="label">
+                    <span className="label-text">Password</span>
+                    </label>
+                    <input type="password" placeholder="password" className="input input-bordered" required />
+                    <label className="label">
+                    <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                    </label>
+                </div>
+                <div className="flex w-full">
+                    <div className="grid h-[70px] w-[50px] flex-grow card rounded-box place-items-center cursor-pointer btn btn-active bg-blue-500 hover:bg-blue-600"><img src={fbLogo} className="h-[50px]"/></div>
+                    <div className="divider divider-horizontal">OR</div>
+                    <div className="grid h-[70px] w-[50px] flex-grow card rounded-box place-items-center cursor-pointer btn btn-active bg-emerald-500 hover:bg-emerald-600"><img src={googleLogo} className="h-[50px]"/></div>
+                </div>
+                <div className="form-control mt-6">
+                    <button className="btn btn-primary">Login</button>
+                </div>
+                </form>
+            </div>
+            <form method="dialog" className="modal-backdrop">
+                <button>close</button>
+            </form>
             </dialog>
         </>
     );
