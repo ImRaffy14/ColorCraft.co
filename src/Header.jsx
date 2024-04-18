@@ -50,7 +50,7 @@ function Header() {
           <li className="mr-4"><Links to="/ColorCraft.co/IllumiGlow/">Products</Links></li>
           <li className="mr-4"><Link activeClass="active" spy={true} to="about-us" smooth={true} duration={500}>About Us</Link></li>
           <li className="mr-4"><a>Contact Us</a></li>
-          <li className="mr-4"><a>Reviews</a></li>
+          <li className="mr-4"><a>Testimonial</a></li>
         </ul>
       </div>
       <div className="navbar-end mr-2 md:mr-6">

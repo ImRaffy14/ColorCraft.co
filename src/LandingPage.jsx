@@ -18,6 +18,7 @@ function LandingPage() {
   return (
 
   <>
+    
     <div id="landing-page" className="h-screen w-full relative">
       <div
         className="absolute inset-0 bg-cover bg-center"

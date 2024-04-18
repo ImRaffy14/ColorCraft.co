@@ -282,13 +282,27 @@ function IllumiGlow () {
                     </div>)}
                 </div>
 
-                <div className="w-full md:w-6/12 h-[400px] mt-[30px] lg:mt-[110px]">
-                <h1 className="font-bold text-center text-2xl mb-[30px]">Order Summary</h1>
-                <p><a className="font-bold mt-32">Total Price:</a> {sumAsPHP}</p>
-                <p><a className="font-bold">Shipping fee:</a> ₱200.00</p>
-                <h1 className="border-t border-black"><a className="font-bold">Subtotal:</a> {subTotalAsPHP}</h1>
-                <button className="btn btn-success mt-4 w-32" onClick={()=>document.getElementById('login').showModal()}>Proceed to Checkout</button>
+                <div className="max-w-screen-sm w-full lg:w-6/12 mx-auto h-[400px] mt-[30px] lg:mt-[120px]">
+                    <h1 className="font-extrabold text-center text-2xl md:text-4xl mb-[30px]">Order Summary</h1>
+                    <p className="flex justify-between w-full">
+                        <span className="font-medium text-xl">Total Price</span>
+                        <span className="font-medium text-xl">{sumAsPHP}</span>
+                    </p>
+                    <p className="flex justify-between w-full mt-[10px]">
+                        <span className="font-medium text-xl">Shipping fee</span> 
+                        <span className="font-medium text-xl">₱200.00</span>
+                    </p>
+                    <h1 className="flex justify-between w-full border-t border-b border-black mt-[10px] py-2">
+                        <span className="font-medium text-xl">Subtotal</span> 
+                        <span className="font-medium text-xl">{subTotalAsPHP}</span>
+                    </h1>
+                    <div className="flex justify-center">
+                        <button className="btn btn-success mt-4 w-[250px] h-[60px] rounded-full" onClick={()=>document.getElementById('login').showModal()}>
+                            Proceed to Checkout
+                        </button>
+                    </div>
                 </div>
+                
             </div>
             <form method="dialog" className="modal-backdrop">
                 <button>close</button>
@@ -327,7 +341,7 @@ function IllumiGlow () {
                     </label>
                     <input type="password" placeholder="password" className="input input-bordered" required />
                     <label className="label">
-                    <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                    <a className="label-text-alt link link-hover">Forgot password?</a>
                     </label>
                 </div>
                 <div className="flex w-full">
