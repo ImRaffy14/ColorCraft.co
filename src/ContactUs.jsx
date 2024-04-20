@@ -31,7 +31,7 @@ function ContactUs(){
                 <div className="mt-[250px]"> 
                     <h1 className="font-extrabold text-4xl sm:text-[40px] mb-4 text-center ">Contact Us</h1>
                 </div>
-                <div className="h-dvh-75 mb-[50px] mt-[35px] flex flex-col md:flex-row justify-center items-center mx-4">
+                <div className="h-dvh-75 mt-[35px] flex flex-col md:flex-row justify-center items-center mx-4">
                     <div className="card w-[350px] sm:w-[500px] max-[450px]:w-[280px] h-[340px] bg-zinc-200 shadow-2xl border border-gray-400 my-5 mx-3">
                         <div className="card-body items-center">
                             <h2 className="text-center font-bold text-2xl">Chat Support</h2>

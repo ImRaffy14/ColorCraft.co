@@ -5,19 +5,19 @@ import { Link } from 'react-scroll';
 function Testimonial() {
   return (
     <section id="testimonial">
-    <div className="h-screen w-full bg-gray-100">
+    <div className="h-dvh-75 w-full bg-gray-100">
       <div className="max-w-screen-xl flex flex-col justify-center mx-auto">
-        <div className="mt-[250px]">
+        <div className="mt-[200px]">
           <h1 className="font-extrabold text-3xl sm:text-[40px] mb-4 text-center md:text-start ml-0 md:ml-6">
             Our Customer's Experience
           </h1>
         </div>
-        <div className="mt-16 flex  overflow-x-auto snap-mandatory snap-x">
+        <div className="mt-16 flex  overflow-x-auto snap-mandatory snap-x mb-36">
           {/* Container with fixed width and horizontal scrolling */}
           <div className="flex mb-[30px]">
             {/* Fixed width cards */}
             {Reviews.map((reviews, index) => 
-            <div key={index} className="snap-center card w-[380px] h-auto bg-zinc-200 shadow-2xl border border-gray-400 mx-2">
+            <div key={index} className="snap-center card w-[300px] sm:w-[380px] h-auto bg-zinc-200 shadow-2xl border border-gray-400 mx-2">
             <div className="mt-4 mx-[20px]">
               <p className="text-md text-center py-2 border-b border-gray-300 italic text-gray-800">"{reviews.Comment}"</p>
               <p className="text-md text-center font-bold mt-2">{reviews.Name}</p>
