@@ -36,8 +36,8 @@ function Header() {
           <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52 text-black">
             <li className="mr-4"><Links to="/ColorCraft.co/IllumiGlow/">Products</Links></li>
             <li><Link to="about-us" smooth={true} duration={500}>About Us</Link></li>
-            <li><a>Contact Us</a></li>
-            <li><a>FAQ's</a></li>
+            <li><Link to="contact-us" smooth={true} duration={500}>Contact Us</Link></li>
+            <li><Link to="testimonial" smooth={true} duration={500}>Testimonial</Link></li>
           </ul>
         </div>
         
@@ -49,8 +49,8 @@ function Header() {
         <ul className="menu menu-horizontal px-1">
           <li className="mr-4"><Links to="/ColorCraft.co/IllumiGlow/">Products</Links></li>
           <li className="mr-4"><Link activeClass="active" spy={true} to="about-us" smooth={true} duration={500}>About Us</Link></li>
-          <li className="mr-4"><a>Contact Us</a></li>
-          <li className="mr-4"><a>Testimonial</a></li>
+          <li className="mr-4"><Link activeClass="active" spy={true} to="contact-us" smooth={true} duration={500}>Contact Us</Link></li>
+          <li className="mr-4"><Link activeClass="active" spy={true} to="testimonial" smooth={true} duration={500}>Testimonial</Link></li>
         </ul>
       </div>
       <div className="navbar-end mr-2 md:mr-6">

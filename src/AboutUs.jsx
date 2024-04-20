@@ -1,6 +1,7 @@
 import PaintImg from './assets/PaintImg.png'
 import AboutUsImg from './assets/AboutUsImg.png'
 import React, { useState, useEffect } from 'react';
+import { link } from 'react-scroll'
 
 function AboutUs (){
 
@@ -22,9 +23,10 @@ function AboutUs (){
     
 
     return(
-        <div className="h-[1000px] w-full bg-gray-100">
+        <section id="about-us">
+        <div className="h-[900px] w-full bg-gray-100">
             <div className={`max-w-screen-xl mx-auto flex items-center justify-center h-[900px] px-4 slide-about-product ${isVisible ? 'animate' : ''}`}>
-                <div className="flex flex-col h-[750px] md:h-[500px] w-full lg:w-[1800px] mx-2 overscroll-contain items-center">
+                <div className="flex flex-col h-[750px] md:h-[650px] w-full lg:w-[1800px] mx-2 overscroll-contain items-center">
                     <div className="hidden md:block">
                         <h1 className=" text-center font-extrabold text-3xl mb-4 underline">About Product</h1>
                         <p className=" text-center">Glow in the Dark Paint, a revolutionary product that brings a mesmerizing glow to any surface. Our range includes Interior Glow Paint, Face and Body Glow Paint, and Spray Glow based Paint, all of which are water-based, eco-friendly, and non-toxic. The key features of our glow paint include a vibrant and long-lasting glow effect that adds a touch of magic to your surroundings. With its easy application and quick-drying formula, our paint allows for hassle-free use on various surfaces. Whether you want to create a captivating ambiance in your home, experiment with unique face and body art, or add a luminous touch to objects, our glow paint is the perfect choice. The eco-friendly and non-toxic nature of our paint ensures the safety of users and the environment. It is made using high-quality ingredients that have been carefully selected for optimal performance and durability. Transform your space into a radiant wonderland with our Glow in the Dark Paint product and let your imagination shine. </p>
@@ -38,15 +40,15 @@ function AboutUs (){
                         </div>
                     </div>
                 </div>
-                <div className="h-[600px] ml-[50px] hidden lg:block">
+                <div className="h-[700px] ml-[50px] hidden lg:block">
                     <img src={PaintImg} className="w-[1000px] h-[450px]"/>
                 </div>
             </div>
             <div className={`max-w-screen-xl mx-auto flex items-center justify-center h-[100px] px-4 slide-about-us ${isVisible ? 'animate' : ''} `}>
-                <div className="h-[900px] mx-[0px] hidden lg:block">
+                <div className="h-[950px] mx-[0px] hidden lg:block">
                     <img src={AboutUsImg} className="w-[1100px] h-[500px]"/>
                 </div>
-                <div className="flex flex-col h-[600px] lg:h-[600px] w-full mx-2 items-center">
+                <div className="flex flex-col h-[800px] lg:h-[670px] w-full mx-2 items-center">
                     <div className="hidden md:block">
                         <h1 className=" text-center font-extrabold text-3xl mb-4 underline">About Us</h1>
                         <p className="text-center ">We're dedicated to illuminating the world with safe and innovative glowing paint solutions.
@@ -64,6 +66,7 @@ function AboutUs (){
                 </div>
             </div>
         </div>
+        </section>
     )
 }
 

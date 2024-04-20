@@ -38,9 +38,9 @@ import React, {useState, useEffect} from 'react'
             <li>
               <a>Products</a>
               <ul className="p-2">
-              <li><Link to="IllumiGlow" smooth={true} duration={500}><FaPaintRoller />IllumiGlow Interior paint</Link></li>
-                <li><Link to="GlowGlam" smooth={true} duration={500}><FaPaintBrush />GlowGlam Face and body paint</Link></li>
-                <li><Link to="GlowMagic" smooth={true} duration={500}><GiSpray />GlowMagic Spray paint</Link></li>
+              <li><Link to="IllumiGlow" activeClass="active" smooth={true} duration={500}><FaPaintRoller />IllumiGlow Interior paint</Link></li>
+                <li><Link to="GlowGlam" activeClass="active" smooth={true} duration={500}><FaPaintBrush />GlowGlam Face and body paint</Link></li>
+                <li><Link to="GlowMagic" activeClass="active" smooth={true} duration={500}><GiSpray />GlowMagic Spray paint</Link></li>
               </ul>
             </li>
           </ul>
@@ -52,9 +52,9 @@ import React, {useState, useEffect} from 'react'
       </div>
       <div className="navbar-center hidden md:flex ">
         <ul className="menu menu-horizontal px-1">
-          <li className="border-r border-gray-400"><Link to="IllumiGlow" smooth={true} duration={500}><FaPaintRoller />IllumiGlow Interior paint</Link></li>
-          <li className="border-r border-gray-400"><Link to="GlowGlam" smooth={true} duration={500}><FaPaintBrush />GlowGlam Face and body paint</Link></li>
-          <li><Link to="GlowMagic" smooth={true} duration={500}><GiSpray />GlowMagic Spray paint</Link></li>
+          <li className="border-r border-gray-400"><Link activeClass="active" spy={true} to="IllumiGlow" smooth={true} duration={500}><FaPaintRoller />IllumiGlow Interior paint</Link></li>
+          <li className="border-r border-gray-400"><Link activeClass="active" spy={true} to="GlowGlam" smooth={true} duration={500}><FaPaintBrush />GlowGlam Face and body paint</Link></li>
+          <li><Link activeClass="active" spy={true} to="GlowMagic" smooth={true} duration={500}><GiSpray />GlowMagic Spray paint</Link></li>
         </ul>
       </div>
       <div className="navbar-end mr-2 md:mr-6">

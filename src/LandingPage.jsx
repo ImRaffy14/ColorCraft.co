@@ -64,9 +64,6 @@ function LandingPage() {
         </button> 
         </Link> 
       </div>
-      <div className="my-[90px]"> 
-      <section id="about-us"></section>
-      </div> 
     </div>
     
   </>  
